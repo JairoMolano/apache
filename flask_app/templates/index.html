@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Práctica Servidor Web</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 2.5rem 3rem;
+      max-width: 560px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    h1 { font-size: 2rem; color: #38bdf8; margin-bottom: 0.5rem; }
+    .subtitle { color: #94a3b8; font-size: 0.95rem; margin-bottom: 2rem; }
+    .stack {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      background: #0f172a;
+      border: 1px solid #475569;
+      border-radius: 20px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem;
+      color: #7dd3fc;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .info-grid {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #1e293b;
+      font-size: 0.88rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .label { color: #64748b; }
+    .value { color: #a3e635; font-family: monospace; }
+    .footer { color: #475569; font-size: 0.78rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>¡Hola, Mundo!</h1>
+    <p class="subtitle">Servidor Web Linux — Práctica de Laboratorio</p>
+
+    <div class="stack">
+      <span class="badge">🐧 Linux</span>
+      <span class="badge">🐳 Docker</span>
+      <span class="badge">🌐 Apache</span>
+      <span class="badge">🐍 Flask</span>
+      <span class="badge">⚙️ Gunicorn</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-row">
+        <span class="label">Estado</span>
+        <span class="value">✅ Operativo</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Servidor de aplicación</span>
+        <span class="value">Gunicorn (WSGI)</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Proxy inverso</span>
+        <span class="value">Apache 2.4</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Framework</span>
+        <span class="value">Flask 3.x</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Hora del servidor</span>
+        <span class="value">{{ hora }}</span>
+      </div>
+    </div>
+
+    <p class="footer">Solicitud procesada: Apache → Gunicorn → Flask → Tú</p>
+  </div>
+</body>
+</html>
