@@ -1,42 +1,29 @@
-version: "3.9"
-
-# ============================================================
-#  Práctica Servidor Web Linux
-#  Arquitectura: Apache (proxy) → Gunicorn (WSGI) → Flask
-# ============================================================
-
 services:
 
-  # ── Servicio Flask + Gunicorn ──────────────────────────────
   flask:
     build:
       context: ./flask_app
       dockerfile: Dockerfile
-    container_name: srv_flask
-    # Bind mount: cambios en ./flask_app se reflejan en el contenedor
-    # sin necesidad de reconstruir la imagen
+    container_name: flask
     volumes:
       - ./flask_app:/app
-    # Gunicorn arranca automáticamente (definido en CMD del Dockerfile)
     restart: unless-stopped
     networks:
-      - red_practica
+      - red
 
-  # ── Servicio Apache (reverse proxy) ───────────────────────
   apache:
     build:
       context: ./apache
       dockerfile: Dockerfile
-    container_name: srv_apache
+    container_name: apache
     ports:
-      - "80:80"       # Expuesto al host — accesible desde Windows
+      - "80:80"
     depends_on:
-      - flask          # Apache espera a que Flask esté arriba
+      - flask
     restart: unless-stopped
     networks:
-      - red_practica
+      - red
 
-# ── Red interna entre contenedores ────────────────────────────
 networks:
-  red_practica:
+  red:
     driver: bridge

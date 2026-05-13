@@ -7,7 +7,3 @@ app = Flask(__name__)
 def index():
     hora = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return render_template("index.html", hora=hora)
-
-@app.route("/salud")
-def salud():
-    return {"estado": "ok", "mensaje": "Servidor Flask operativo"}, 200
